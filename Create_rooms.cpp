@@ -6,10 +6,10 @@ using namespace std;
 
 void ShowRoom(){
     cout << "No.    Room Type                  Price" <<endl;
-    cout <<"1.     Standard Room               5000" <<endl;
-    cout << "2.     Superior Room               5000" <<endl;
-    cout << "3.     Deluxe Room                 5000" <<endl;
-    cout << "4.     Suite Room                  5000" <<endl;
+    cout << "1.     Standard Room               1200" <<endl;
+    cout << "2.     Superior Room               1500" <<endl;
+    cout << "3.     Deluxe Room                 2000" <<endl;
+    cout << "4.     Suite Room                  3500" <<endl;
 
     
 }
