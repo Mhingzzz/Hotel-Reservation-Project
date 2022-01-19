@@ -1,5 +1,21 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
 //อันนี้คือโค้ดสำหรับสร้างห้อง
 
+void ShowRoom(){
+    cout << "No.    Room Type                  Price" <<endl;
+    cout <<"1.     Standard Room               5000" <<endl;
+    cout << "2.     Superior Room               5000" <<endl;
+    cout << "3.     Deluxe Room                 5000" <<endl;
+    cout << "4.     Suite Room                  5000" <<endl;
+
+    
+}
+
+int main(){
+    int Inday, Outday, month;
+    ShowRoom();
+    
+}
