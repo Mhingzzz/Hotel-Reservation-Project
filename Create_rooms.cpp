@@ -11,7 +11,6 @@ void ShowRoom(){
     cout << "3.     Deluxe Room                 2000" <<endl;
     cout << "4.     Suite Room                  3500" <<endl;
     cout << "Please enter the room number that you are interested in: "; 
-    cin >> numb;
 }
 
 

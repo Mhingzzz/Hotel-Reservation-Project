@@ -1,8 +1,27 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
+
 int numb;
-//รีวิวภายในห้อง
+void ShowRoom();
+void Review(int);
+int main(){
+    ShowRoom();
+    cin >> numb;
+    Review(numb);
+}
+
+void ShowRoom(){
+    cout << "No.    Room Type                  Price" <<endl;
+    cout << "1.     Standard Room               1200" <<endl;
+    cout << "2.     Superior Room               1500" <<endl;
+    cout << "3.     Deluxe Room                 2000" <<endl;
+    cout << "4.     Suite Room                  3500" <<endl;
+    cout << "Please enter the room number that you are interested in: "; 
+}
+
+
 void Review(int i){
     if (numb == 1)
     {
@@ -57,8 +76,4 @@ void Review(int i){
     }
     
     
-}
-
-int main(){
-    Review(numb);
 }
