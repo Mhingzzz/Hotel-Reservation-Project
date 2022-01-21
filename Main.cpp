@@ -29,7 +29,7 @@ void ShowRoom(){
 void Review(int i){
     if (numb == 1)
     {
-        cout <<"Standard Room" << endl;
+        cout <<"\nStandard Room   1200" << endl;
         cout << "   Two twin bed" << endl;
         cout << "   Size Room 15 square meters" << endl;
         cout << "   Air condition" <<endl;
@@ -40,7 +40,7 @@ void Review(int i){
     }
     if (numb == 2)
     {
-        cout << "Superior Room" <<endl;
+        cout << "\nSuperior Room  1500" <<endl;
         cout << "   Size Room 20 square meters" <<endl;
         cout << "   Two twin bed" << endl;
         cout << "   Air condition" <<endl;
@@ -53,7 +53,7 @@ void Review(int i){
     }
     if (numb == 3)
     {
-        cout << "Deluxe Room" <<endl;
+        cout << "\nDeluxe Room    2000" <<endl;
         cout << "   Size Room 30 square meters" <<endl;
         cout << "   Two twin bed" << endl;
         cout << "   Air condition" <<endl;
@@ -67,7 +67,7 @@ void Review(int i){
     }
     if (numb == 4)
     {
-        cout << "Suite Room" <<endl;
+        cout << "\nSuite Room 3500" <<endl;
         cout << "   Size Room 46 square meters" <<endl;
         cout << "   Two twin bed" << endl;
         cout << "   Air condition" <<endl;
