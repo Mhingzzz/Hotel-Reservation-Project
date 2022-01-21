@@ -1,19 +1,23 @@
 #include<iostream>
+#include<algorithm>
 #include<string>
+#include<conio.h>
 using namespace std;
 
+string text;
+int numb,month1,month2 , day1,day2;
 
-int numb;
-void ShowRoom();
-void BackToShowRoom();
-void Review(int);
-
-
+void ShowRoom(); //ราคาห้อง
+void BackToShowRoom(); //กลับหน้าประเภทห้อง
+void Review(int); //โชว์รายละเอียดของห้อง
+void Days(int &month, int &day); //ป้อนค่าวันเดือน
+int TotalDays(int day1,int month1,int day2,int month2); //คำนวนวันทั้งหมดที่ต้องการพัก
 
 int main(){
     ShowRoom();
     cin >> numb;
     Review(numb);
+    BackToShowRoom();
 }
 
 void ShowRoom(){
@@ -25,22 +29,21 @@ void ShowRoom(){
     cout << "Please enter the room number that you are interested in: "; 
 }
 
-
 void Review(int i){
+    system("cls");
     if (numb == 1)
     {
-        cout <<"\nStandard Room   1200" << endl;
+        cout <<"Standard Room" << endl;
         cout << "   Two twin bed" << endl;
         cout << "   Size Room 15 square meters" << endl;
         cout << "   Air condition" <<endl;
         cout << "   Coffee machine" <<endl;
         cout << "   Free WiFi" << endl;
         cout << "   Desk" <<endl;
-        BackToShowRoom();
     }
     if (numb == 2)
     {
-        cout << "\nSuperior Room  1500" <<endl;
+        cout << "Superior Room" <<endl;
         cout << "   Size Room 20 square meters" <<endl;
         cout << "   Two twin bed" << endl;
         cout << "   Air condition" <<endl;
@@ -49,11 +52,10 @@ void Review(int i){
         cout << "   Refrigerator" <<endl;
         cout << "   Safe" <<endl;
         cout << "   Desk" <<endl;
-        BackToShowRoom();
     }
     if (numb == 3)
     {
-        cout << "\nDeluxe Room    2000" <<endl;
+        cout << "Deluxe Room" <<endl;
         cout << "   Size Room 30 square meters" <<endl;
         cout << "   Two twin bed" << endl;
         cout << "   Air condition" <<endl;
@@ -63,11 +65,10 @@ void Review(int i){
         cout << "   Safe" <<endl;
         cout << "   Desk" <<endl; 
         cout << "   Microwave" <<endl;
-        BackToShowRoom();
     }
     if (numb == 4)
     {
-        cout << "\nSuite Room 3500" <<endl;
+        cout << "Suite Room" <<endl;
         cout << "   Size Room 46 square meters" <<endl;
         cout << "   Two twin bed" << endl;
         cout << "   Air condition" <<endl;
@@ -80,17 +81,53 @@ void Review(int i){
         cout << "   Bathtub" <<endl;
         cout << "   Microwave" <<endl;
         cout << "   Kitchen room" <<endl;
-        BackToShowRoom();
     }
-    if (numb == 0)
-    {
-        ShowRoom();
-    }
-    
-    
+    BackToShowRoom();
 }
 
 void BackToShowRoom(){
-    cout << "\n If you want to go back to main menu press 0:";
-    cin >> numb;
+    cout << "If you want to go back to main menu enter 'Back': ";
+    cin >> text;
+    transform(text.begin(), text.end(), text.begin(), ::tolower);
+    if (text == "back")
+    {
+        system("cls");
+        ShowRoom();
+        cin >> numb;
+        Review(numb);
+        
+    }
+    
+}
+
+
+void Days(int &month, int &day){
+    int m , d;
+    int dby[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+    do
+    {
+    cout << "Please input month :";
+    cin >> m;
+    } while (m > 12 || m < 1);
+    month = m;
+    do
+    {
+        cout << "Please Input day:";
+        cin >> d;
+    } while (d < 1 || d > dby[m-1]);
+    day = d;
+
+}
+
+int TotalDays(int day1,int month1,int day2,int month2){
+
+    int dby[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+
+    if (month1 == month2)
+    {
+        return day2 - day1 + 1;
+    }else{
+        return (dby[month1-1] - day1 + 1) + day2;
+    }
+    
 }
