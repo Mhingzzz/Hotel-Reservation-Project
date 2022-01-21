@@ -1,11 +1,14 @@
 #include<iostream>
+#include<conio.h>
 using namespace std;
 
 int numb;
 //รีวิวภายในห้อง
 void ShowRoom();
+void BackToShowRoom();
 
 void Review(int i){
+    system("cls");
     if (numb == 1)
     {
         cout <<"Standard Room" << endl;
@@ -57,12 +60,7 @@ void Review(int i){
         cout << "   Microwave" <<endl;
         cout << "   Kitchen room" <<endl;
     }
-    if (numb == 0)
-    {
-        ShowRoom();
-    }
-    
-    
+    void BackToShowRoom();
 }
 
 int main(){
