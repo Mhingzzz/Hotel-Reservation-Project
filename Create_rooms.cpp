@@ -39,7 +39,7 @@ void ChooseRoom(){
     cin >> text;
     if (text == "next")
     {
-        
+        //เอาไปต่อ
     }
     
 }
