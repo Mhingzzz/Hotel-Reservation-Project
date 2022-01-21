@@ -7,7 +7,7 @@ int numb;
 void ShowRoom();
 void BackToShowRoom();
 
-void Review(int i){
+void Review(int numb){
     system("cls");
     if (numb == 1)
     {
@@ -19,7 +19,7 @@ void Review(int i){
         cout << "   Free WiFi" << endl;
         cout << "   Desk" <<endl;
     }
-    if (numb == 2)
+    else if (numb == 2)
     {
         cout << "Superior Room" <<endl;
         cout << "   Size Room 20 square meters" <<endl;
@@ -31,7 +31,7 @@ void Review(int i){
         cout << "   Safe" <<endl;
         cout << "   Desk" <<endl;
     }
-    if (numb == 3)
+    else if (numb == 3)
     {
         cout << "Deluxe Room" <<endl;
         cout << "   Size Room 30 square meters" <<endl;
@@ -44,7 +44,7 @@ void Review(int i){
         cout << "   Desk" <<endl; 
         cout << "   Microwave" <<endl;
     }
-    if (numb == 4)
+    else if (numb == 4)
     {
         cout << "Suite Room" <<endl;
         cout << "   Size Room 46 square meters" <<endl;
@@ -59,7 +59,11 @@ void Review(int i){
         cout << "   Bathtub" <<endl;
         cout << "   Microwave" <<endl;
         cout << "   Kitchen room" <<endl;
+    }else{
+        Review(numb);
     }
+    
+    
     void BackToShowRoom();
 }
 
