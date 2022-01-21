@@ -9,14 +9,13 @@ int numb,month1,month2 , day1,day2;
 
 void ShowRoom(); //ราคาห้อง
 void BackToShowRoom(); //กลับหน้าประเภทห้อง
-void Review(int); //โชว์รายละเอียดของห้อง
+void Review(); //โชว์รายละเอียดของห้อง
 void Days(int &month, int &day); //ป้อนค่าวันเดือน
 int TotalDays(int day1,int month1,int day2,int month2); //คำนวนวันทั้งหมดที่ต้องการพัก
 
 int main(){
     ShowRoom();
-    cin >> numb;
-    Review(numb);
+    Review();
     BackToShowRoom();
 }
 
@@ -26,13 +25,14 @@ void ShowRoom(){
     cout << "2.     Superior Room               1500" <<endl;
     cout << "3.     Deluxe Room                 2000" <<endl;
     cout << "4.     Suite Room                  3500" <<endl;
-    cout << "Please enter the room number that you are interested in: "; 
 }
-
-void Review(int i){
-    system("cls");
+void Review(){
+    
+    cout << "Please enter the room number that you are interested in: ";
+    cin >> numb;
     if (numb == 1)
     {
+        system("cls");
         cout <<"Standard Room" << endl;
         cout << "   Two twin bed" << endl;
         cout << "   Size Room 15 square meters" << endl;
@@ -41,8 +41,9 @@ void Review(int i){
         cout << "   Free WiFi" << endl;
         cout << "   Desk" <<endl;
     }
-    if (numb == 2)
+    else if (numb == 2)
     {
+        system("cls");
         cout << "Superior Room" <<endl;
         cout << "   Size Room 20 square meters" <<endl;
         cout << "   Two twin bed" << endl;
@@ -53,8 +54,9 @@ void Review(int i){
         cout << "   Safe" <<endl;
         cout << "   Desk" <<endl;
     }
-    if (numb == 3)
+    else if (numb == 3)
     {
+        system("cls");
         cout << "Deluxe Room" <<endl;
         cout << "   Size Room 30 square meters" <<endl;
         cout << "   Two twin bed" << endl;
@@ -66,8 +68,9 @@ void Review(int i){
         cout << "   Desk" <<endl; 
         cout << "   Microwave" <<endl;
     }
-    if (numb == 4)
+    else if (numb == 4)
     {
+        system("cls");
         cout << "Suite Room" <<endl;
         cout << "   Size Room 46 square meters" <<endl;
         cout << "   Two twin bed" << endl;
@@ -81,20 +84,24 @@ void Review(int i){
         cout << "   Bathtub" <<endl;
         cout << "   Microwave" <<endl;
         cout << "   Kitchen room" <<endl;
+    }else{
+        system("cls");
+        ShowRoom();
+        Review();
     }
+    
     BackToShowRoom();
 }
 
 void BackToShowRoom(){
-    cout << "If you want to go back to main menu enter 'Back': ";
+    cout << "\nIf you want to go back to main menu enter 'Back': ";
     cin >> text;
     transform(text.begin(), text.end(), text.begin(), ::tolower);
     if (text == "back")
     {
         system("cls");
         ShowRoom();
-        cin >> numb;
-        Review(numb);
+        Review();
         
     }
     
