@@ -3,6 +3,8 @@ using namespace std;
 
 int numb;
 //รีวิวภายในห้อง
+void ShowRoom();
+
 void Review(int i){
     if (numb == 1)
     {
@@ -54,6 +56,10 @@ void Review(int i){
         cout << "   Bathtub" <<endl;
         cout << "   Microwave" <<endl;
         cout << "   Kitchen room" <<endl;
+    }
+    if (numb == 0)
+    {
+        ShowRoom();
     }
     
     

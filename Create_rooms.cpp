@@ -13,6 +13,10 @@ void ShowRoom(){
     cout << "Please enter the room number that you are interested in: "; 
 }
 
+void BackToShowRoom(){
+    cout << "\n If you want to go back to main menu press 0:";
+    cin >> numb;
+}
 
 
 int main(){

@@ -5,7 +5,9 @@ using namespace std;
 
 int numb;
 void ShowRoom();
+void BackToShowRoom();
 void Review(int);
+
 
 
 int main(){
@@ -34,6 +36,7 @@ void Review(int i){
         cout << "   Coffee machine" <<endl;
         cout << "   Free WiFi" << endl;
         cout << "   Desk" <<endl;
+        BackToShowRoom();
     }
     if (numb == 2)
     {
@@ -46,6 +49,7 @@ void Review(int i){
         cout << "   Refrigerator" <<endl;
         cout << "   Safe" <<endl;
         cout << "   Desk" <<endl;
+        BackToShowRoom();
     }
     if (numb == 3)
     {
@@ -59,6 +63,7 @@ void Review(int i){
         cout << "   Safe" <<endl;
         cout << "   Desk" <<endl; 
         cout << "   Microwave" <<endl;
+        BackToShowRoom();
     }
     if (numb == 4)
     {
@@ -75,7 +80,17 @@ void Review(int i){
         cout << "   Bathtub" <<endl;
         cout << "   Microwave" <<endl;
         cout << "   Kitchen room" <<endl;
+        BackToShowRoom();
+    }
+    if (numb == 0)
+    {
+        ShowRoom();
     }
     
     
+}
+
+void BackToShowRoom(){
+    cout << "\n If you want to go back to main menu press 0:";
+    cin >> numb;
 }
