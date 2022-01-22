@@ -2,6 +2,7 @@
 #include<algorithm>
 #include<string>
 #include<conio.h>
+#include<ctime>
 using namespace std;
 
 string text;
