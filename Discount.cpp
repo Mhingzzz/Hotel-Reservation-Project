@@ -7,7 +7,7 @@ void RandomDiscount(int price,int month){ //function สุ่มส่วนล
     int decision; 
     while(decision < 1 || decision > 2){ //ตัวเลือกรับส่วนลด รับพิมพ์ 1 ไม่รับพิทพ์ 2 วน loop ถ้า input ไม่ใช่เลข 1,2
         cout << "Ask for season discount." << endl;
-        cout << "Yes: 1" << " No: 2" << endl;
+        cout << "Accept: 1" << " Decline: 2" << endl;
         cout << "Answer: ";
         cin >> decision;
         cout << endl;
@@ -20,7 +20,7 @@ void RandomDiscount(int price,int month){ //function สุ่มส่วนล
             season = "Summer";
         }else if(month == 5 || month == 6 || month == 7 || month == 8){
             season = "Rainy";
-        }else if(month == 9 || month == 10 ||month == 11 ||month == 12){
+        }else if(month == 9 || month == 10 ||month == 11 || month == 12){
             season = "Winter";
         }
         
@@ -43,7 +43,7 @@ void RandomDiscount(int price,int month){ //function สุ่มส่วนล
 
     
     }else if(decision == 2){ //หลังจากที่ input เลข 2
-        cout << "You choose not to ask for season discount.";
+        cout << "You decline to ask for season discount.";
     }
 
 }    
