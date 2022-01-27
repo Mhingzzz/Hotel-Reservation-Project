@@ -3,10 +3,10 @@
 #include<fstream>
 #include<vector>
 using namespace std;
-
+#define vs vector<string>
 //การจองห้องพัก
 
-void importData(string fn,vector<string> &L,vector<string> &N,vector<string> &PW,vector<string> &R,vector<string> &S,vector<string> &E){
+void importData(string fn,vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){
     string text;
     char format[] = "%s %s %s %[^:]: %s";
     char n[100],s[20],e[20],pw[50],r[10];
@@ -24,7 +24,7 @@ void importData(string fn,vector<string> &L,vector<string> &N,vector<string> &PW
     source.close();
 }
 
-void exportData(string fn,vector<string> &L){
+void exportData(string fn,vs &L){
     ofstream data(fn);
     data << "Room_ID---Start---end---Name---Password\n";
     for(unsigned int i=0 ; i<L.size() ; i++){
@@ -33,13 +33,15 @@ void exportData(string fn,vector<string> &L){
     data.close();
 }
 
-void insertData(vector<string> &L,vector<string> &N,vector<string> &PW,vector<string> &R,vector<string> &S,vector<string> &E){
-    int first,last,l=R.size(),idx;
-    for(int i=0 ; i<l ; i++){
-        if(atoi(R[i].c_str())==atoi(R[l-1].c_str())){
+void insertData(vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){
+    int first=-1,last,l=R.size(),idx;
+    string text = R[l-1]+" "+S[l-1]+" "+E[l-1]+" "+N[l-1]+": "+PW[l-1];
+    for(int i=0 ; i<l-1 ; i++){
+        if(atoi(R[l-1].c_str())<=atoi(R[i].c_str())){
             first = i;
-            for(int j=first+1 ; j<l ; j++){
-                if(atoi(R[j].c_str())==atoi(R[l-1].c_str())) continue;
+            last = first;
+            for(int j=first+1 ; j<l-1 ; j++){
+                if(atoi(R[l-1].c_str())==atoi(R[j].c_str())) continue;
                 else{
                     last = j-1;
                     break;
@@ -48,13 +50,21 @@ void insertData(vector<string> &L,vector<string> &N,vector<string> &PW,vector<st
             break;
         }
     }
-    for(int i=first ; i<=last ; i++){
-        if(atoi(S[l-1].c_str())<atoi(S[i].c_str())){
-            idx = i;
+    if(first==-1){
+        L.push_back(text);
+        return;
+    }
+    else if(first==last && atoi(R[l-1].c_str())!=atoi(R[first].c_str())) idx = first;
+    else{
+        for(int i=first ; i<=last ; i++){
+            if(atoi(S[l-1].c_str())<atoi(S[i].c_str())){
+                idx = i;
+                break;
+            }
+            idx = i+1;
         }
     }
-    L[l-1] = R[l-1]+" "+S[l-1]+" "+E[l-1]+" "+N[l-1]+": "+PW[l-1];
-    L.insert(L.begin()+idx,L[l-1]);
+    L.insert(L.begin()+idx,text);
 }
 
 int main(){
@@ -62,7 +72,6 @@ int main(){
     string filename = "database.txt";
     string r,s,e,n,pw;
     importData(filename,lines,names,passwords,roomIDs,starts,ends);
-
 
     //ส่วนทดลองการจอง เพื่อนำข้อมูลเข้าdatabase (vertion beta)
     cin >> r >> s >> e >> pw;
@@ -73,8 +82,7 @@ int main(){
     roomIDs.push_back(r);
     starts.push_back(s);
     ends.push_back(e);
-
-
+    
     insertData(lines,names,passwords,roomIDs,starts,ends);
     exportData(filename,lines);
     return 0;
