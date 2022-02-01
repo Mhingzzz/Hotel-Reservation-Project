@@ -7,7 +7,7 @@ using namespace std;
 //การจองห้องพัก
 
 void importData(string fn,vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){
-    string text;
+    string text,start;
     char format[] = "%s %s %s %[^:]: %s";
     char n[100],s[20],e[20],pw[50],r[10];
     ifstream source(fn);
@@ -15,10 +15,13 @@ void importData(string fn,vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){
     while(getline(source,text)){
         L.push_back(text);
         sscanf(text.c_str(),format,r,s,e,n,pw);
+        start = s;
+        start.erase(4,1);
+        start.erase(6,1);
         N.push_back(n);
         PW.push_back(pw);
         R.push_back(r);
-        S.push_back(s);
+        S.push_back(start);
         E.push_back(e);
     }
     source.close();
@@ -35,7 +38,13 @@ void exportData(string fn,vs &L){
 
 void insertData(vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){
     int first=-1,last,l=R.size(),idx;
+
+    S[l-1].insert(4,"-");
+    S[l-1].insert(7,"-");
     string text = R[l-1]+" "+S[l-1]+" "+E[l-1]+" "+N[l-1]+": "+PW[l-1];
+    S[l-1].erase(4,1);
+    S[l-1].erase(6,1);
+
     for(int i=0 ; i<l-1 ; i++){
         if(atoi(R[l-1].c_str())<=atoi(R[i].c_str())){
             first = i;
@@ -50,6 +59,7 @@ void insertData(vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){
             break;
         }
     }
+
     if(first==-1){
         L.push_back(text);
         return;
@@ -67,6 +77,7 @@ void insertData(vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){
     L.insert(L.begin()+idx,text);
 }
 
+/*
 int main(){
     vector<string> lines,names,passwords,roomIDs,starts,ends;
     string filename = "database.txt";
@@ -87,3 +98,4 @@ int main(){
     exportData(filename,lines);
     return 0;
 }
+*/
