@@ -36,8 +36,8 @@ void exportData(string fn,vs &L){
     data.close();
 }
 
-void insertData(vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){
-    int first=-1,last,l=R.size(),idx;
+void insertData(vs &L, vs &N, vs &PW, vs &R, vs &S,vs &E){
+    int first=-1, last, l=R.size(), idx;
 
     S[l-1].insert(4,"-");
     S[l-1].insert(7,"-");
