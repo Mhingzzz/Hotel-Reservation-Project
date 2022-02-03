@@ -4,7 +4,7 @@
 using namespace std;
 
 int i,j,p=0;
-string k[26];
+vector<string> SUM(26);
 
 vector<string> foods = {
         "PAPAYA SALAD","ROAST CHICKEN","SPICY MINCED PORK","STEWED PORK LEG ON RICE","RICE PORRIDGE","FRIED RICE PORK","FRIED RICE CHICKEN","FRIED RICE SHRIMP","FRIED RICE CRABEAT",
@@ -31,7 +31,7 @@ void ChooseMenu(){
         }while( i < 1 || i > 26 );
         p++;
         for(int l = 0;l < p;l++){
-            k[l+(p-1)] = foods[i-1];
+            SUM[l+(p-1)] = foods[i-1];
         }
         do{
             cout << "Would you like to choose again? (No == 0 || Yes == 1) " ;
@@ -45,7 +45,7 @@ void MenuSummary(){
     cout << "______________________________________________________" << endl;
     cout << "                   Menu Summary                       " << endl;
     for(int a = 0; a < p ; a++){
-        cout << a+1 << "--> " << k[a] << endl;
+        cout << a+1 << "--> " << SUM[a] << endl;
     }
     cout << "______________________________________________________" << endl;
 }
@@ -55,5 +55,5 @@ int main(){
     ChooseMenu();
     MenuSummary();
     return 0;
-    
+
 }
