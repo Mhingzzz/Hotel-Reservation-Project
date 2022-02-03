@@ -15,26 +15,71 @@
 using namespace std;
 
 string text;
-int numb,month1,month2,day1,day2;
+int numb,totalday;
+date start1,end1;
 
 int main(){
-    do{
-        ShowRoom();
-        do{
-            cout << "Please enter the room number that you are interested in: ";
-            cin >> numb;
-            if(numb<1 || numb>4){
-                system("cls");
+    int state = 1;
+    while(true){
+        if(state==1){
+            system("cls");
+            do{
                 ShowRoom();
+                do{
+                    cout << "Please enter the room number that you are interested in : ";
+                    cin >> numb;
+                    if(numb<1 || numb>4){
+                        system("cls");
+                        ShowRoom();
+                    }
+                }while(numb<1 || numb>4);
+                cin.ignore();
+                Review(numb);
+                do{
+                    cout << "\nIf you want to go back to main menu enter 'Back' or 'Next' : ";
+                    getline(cin,text);
+                    text = Toupper(text);
+                    if(text=="NEXT") break;
+                }while(text!="BACK");
+                system("cls");
+            }while(text!="NEXT");
+            state++;
+        }
+        else if(state==2){
+            system("cls");
+            while(true){
+                cout << "Please enter 1st day (20yy/mm/dd) e.g. 2022/01/01 or 'Back' : ";
+                getline(cin,text);
+                if(Toupper(text)=="BACK"){
+                    state--;
+                    break;
+                }
+                if(start1.checkDate(text)){
+                    state++;
+                    break;
+                }
+                cout << "Wrong input.\n";
             }
-        }while(numb<1 || numb>4);
-        cin.ignore();
-        Review(numb);
-        do{
-            cout << "\nIf you want to go back to main menu enter 'Back': ";
-            getline(cin,text);
-            text = Toupper(text);
-        }while(text!="BACK");
-        system("cls");
-    }while(true);
+        }
+        else if(state==3){
+            system("cls");
+            while(true){
+                cout << "Please enter end day (20yy/mm/dd) e.g. 2022/01/01 or 'Back' : ";
+                getline(cin,text);
+                if(Toupper(text)=="BACK"){
+                    state--;
+                    break;
+                }
+                if(end1.checkDate(text)){
+                    if(atoi(end1.datetext.c_str()) >= atoi(start1.datetext.c_str())){
+                        totalday = TotalDays(start1,end1);
+                        state++;
+                        break;
+                    }
+                }
+                cout << "Wrong input.\n";
+            }
+        }
+        else break;
+    }
 }
