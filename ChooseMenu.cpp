@@ -1,132 +1,58 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
+int i,j,p=0;
+string k[26];
+
+vector<string> foods = {
+        "PAPAYA SALAD","ROAST CHICKEN","SPICY MINCED PORK","STEWED PORK LEG ON RICE","RICE PORRIDGE","FRIED RICE PORK","FRIED RICE CHICKEN","FRIED RICE SHRIMP","FRIED RICE CRABEAT",
+        "RICE TOPPED WITH STIR-FRIED PORK AND BASIL","STEAMED CHICKEN WITH RICE","RICE CRISPY PORK","CONGEE WITH PORK","PORRIDGE WITH FISH","TOM YUM KUNG","CASSEROLED SHRIMP WITH GLASS NOODLES",
+        "PORK STIR-FRIED WITH GARLIC AND PEPPERCORNS","SNAPPER STEAMED MUSSELS","FRIED FISH TOPPTED WITH CHILLI SAUCE","SALTED CAT FISH WITH CHILLI PASTE","MASSA MAN CURRY","GREEN CURRY CHICKEN IN COCONUT MILK",
+        "STEAMED EGG","MINCED PORK OMELET","STEAMED RICE","STRICKY RICE"
+    };
+
+void ShowMenuFoods(){
+    cout << "______________________________________________________" << endl;
+    for(int i = 0; i < foods.size();i++){
+        cout << i+1 << "-->" << " " << *(foods.begin() + i) << endl;
+    }
+    cout << "______________________________________________________" << endl;
+
+}
+
+void ChooseMenu(){
+    do{
+        do{
+            cout << "Please Enter ID Menu --> " ;
+            cin >> i ;
+            if ( i < 1 || i > 26 ) cout << "ID Incorrect!!" << endl;
+        }while( i < 1 || i > 26 );
+        p++;
+        for(int l = 0;l < p;l++){
+            k[l+(p-1)] = foods[i-1];
+        }
+        do{
+            cout << "Would you like to choose again? (No == 0 || Yes == 1) " ;
+            cin >> j;
+            if ( j < 0 || j > 1 ) cout << "Incorrect!!" << endl;
+        }while (j < 0 || j > 1 );
+    }while( j == 1);
+}
+
+void MenuSummary(){
+    cout << "______________________________________________________" << endl;
+    cout << "                   Menu Summary                       " << endl;
+    for(int a = 0; a < p ; a++){
+        cout << a+1 << "--> " << k[a] << endl;
+    }
+    cout << "______________________________________________________" << endl;
+}
+
 int main(){
-    int x,y,m1,m2,m3;
-    cout << "-----------------------------------------------------------------" << endl;
-    do{                                                                 //เลือกรูปแบบอาหาร
-        cout << "Please select a menu style : 1.Thai foods  2.Fast foods" << endl;
-        cin >> x;
-    }while ( x > 2 || x < 1);
-    if ( x == 1 ) {
-        cout << "Thai foods style.";
-    }
-    if ( x == 2 ) {
-        cout << "Fast foods style.";
-    }
-    cout << endl;
-    cout << "-----------------------------------------------------------------" << endl;
-    cout << "-----------------------------------------------------------------" << endl;
-    do{                                                                 //เลือกเวลารับประทาน
-        cout << "please select time : 1.morning 2.daytime 3.evening" << endl;
-        cin >> y;
-    }while ( y > 3 || y < 1 );
-    if ( y == 1 ) cout << "morning";
-    if ( y == 2 ) cout << "daytime";
-    if ( y == 3 ) cout << "evening";
-    cout << endl;                                                                           // loop จำนวนอาหารที่สั่ง
-    cout << "-----------------------------------------------------------------" << endl;
-    cout << "-----------------------------------------------------------------" << endl;
-    if ( x == 1 ) {                                                     //อาหารไทย
-        if ( y == 1 ) {                                     //ตอนเช้า                                                   
-            do{
-                cout << "Please select menu :" << endl;                 //เลือกเมนู
-                cout << "1.boiled rice" << endl;
-                cout << "2.rice porridge" << endl;
-                cout << "3.cooked rice" << endl;
-                cin >> m1;
-            }while ( m1 > 3 || m1 < 1 );
-            if ( m1 == 1 ) {                                            //boiled rice
-                cout << "boiled rice" << endl;
-                do{
-                    cout << "Please select more meat:" << endl;
-                    cout << "1.pork" << endl;
-                    cout << "2.shrimp" << endl;
-                    cout << "3.fish" << endl;
-                    cout << "4.chicken" <<endl;
-                    cout << "5.without meat" << endl;
-                    cin >> m2;
-                }while ( m2 > 5 || m2 < 1 );
-                if ( m2 == 1 ){                                         //pork
-                    cout << "pork" << endl;
-                    do{
-                        cout << "vegetable :" << endl;
-                        cout << "1.add vegetable" << endl;
-                        cout << "2.without vegetable" << endl;
-                        cin >> m3;
-                    }while ( m3 > 2 || m3 < 1 );
-                    if ( m3 == 1 ){                                     //vegetable
-                        cout << "add vegetable" << endl;
-                        cout << x << "/n" << y << "/n" << m1 << "/n" << m2 << "/n" << m3 << endl;
-                    }
-                }
-            }
-            if ( m1 == 2 ) {                                            //reice porridge
-                cout << "rice porridge" << endl;
-                do{
-                    cout << "Please select more meat:" << endl;
-                    cout << "1.pork" << endl;
-                    cout << "2.shrimp" << endl;
-                    cout << "3.fish" << endl;
-                    cout << "4.chicken" <<endl;
-                    cout << "5.without meat" << endl;
-                    cin >> m2;
-                }while ( m2 > 5 || m2 < 1 );
-                if ( m2 == 1 ){
-                    cout << "pork" << endl;
-                    do{
-                        cout << "vegetable :" << endl;
-                        cin >> m3;
-                        cout << "1.add vegetable" << endl;
-                        cout << "2.without vegetable" << endl;
-                    }while ( m3 > 2 || m3 < 1 );
-                    if ( m3 == 1 ){
-                        cout << "add vegetable" << endl;
-                        cout << x << "/n" << y << "/n" << m1 << "/n" << m2 << "/n" << m3 << endl;
-                    }
-                }
-            }
-            if ( m1 == 3 ) {                                            //cooked rice
-                cout << "cooked rice" << endl;
-                do{
-                    cout << "Please select more meat:" << endl;
-                    cout << "1.pork" << endl;
-                    cout << "2.shrimp" << endl;
-                    cout << "3.fish" << endl;
-                    cout << "4.chicken" <<endl;
-                    cout << "5.without meat" << endl;
-                    cin >> m2;
-                }while ( m2 > 5 || m2 < 1 );
-                if ( m2 == 1 ){
-                    cout << "pork" << endl;
-                    do{
-                        cout << "vegetable :" << endl;
-                        cin >> m3;
-                        cout << "1.add vegetable" << endl;
-                        cout << "2.without vegetable" << endl;
-                    }while ( m3 > 2 || m3 < 1 );
-                    if ( m3 == 1 ){
-                        cout << "add vegetable" << endl;
-                        cout << x << "/n" << y << "/n" << m1 << "/n" << m2 << "/n" << m3 << endl;
-                    }
-                }
-            }
-        }
-        if ( y == 2 ) {                                     //กลางวัน
-            cout << "1.boiled rice" << endl;
-            cout << "2.rice porridge" << endl;
-            cout << "3.cooked rice";
-        }
-        if ( y == 3 ) {                                     //เย็น
-            cout << "1.boiled rice" << endl;
-            cout << "2.rice porridge" << endl;
-            cout << "3.cooked rice";
-        }
-    cout << endl;
-    cout << "-----------------------------------------------------------------" << endl;
-    cout << "-----------------------------------------------------------------" << endl;
-
-
-    }
+    ShowMenuFoods();
+    ChooseMenu();
+    MenuSummary();
     return 0;
 }
