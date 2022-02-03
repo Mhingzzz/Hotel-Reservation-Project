@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int month1,month2 , day1,day2;
+//int month1,month2 , day1,day2;
 
 void Days(int &month, int &day){
     int m , d;
@@ -33,7 +33,7 @@ int TotalDays(int day1,int month1,int day2,int month2){
     }
     
 }
-
+/*
 int main(){
     Days(month1,day1);
     Days(month2,day2);
@@ -44,3 +44,4 @@ int main(){
     cout << day2 <<endl;
     cout << TotalDays(day1,month1,day2,month2);
 }
+*/
