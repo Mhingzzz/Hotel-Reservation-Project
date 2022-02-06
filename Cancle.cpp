@@ -35,15 +35,22 @@ void cancle(vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){    //ยกเลิกกา
     }
     while(index<1 || index>j){
         cout << "Select number : ";
-        cin >> index;
+        getline(cin,str);
+        index = atoi(str.c_str());
         if(index<1 || index>j) cout << "Wrong number.\n";
     }
 
     for(int i=2 ; i>=0 ; i--){
         cout << "Please enter a password. : ";
-        cin >> str;
+        getline(cin,str);
         if(str==PW[idx[index-1]]){
             L.erase(L.begin()+idx[index-1]);
+            N.erase(N.begin()+idx[index-1]);
+            PW.erase(PW.begin()+idx[index-1]);
+            R.erase(R.begin()+idx[index-1]);
+            S.erase(S.begin()+idx[index-1]);
+            E.erase(E.begin()+idx[index-1]);
+            system("cls");
             cout << "Cancel the reservation success.";
             return;
         }
