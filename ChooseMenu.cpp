@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int i,j,p=0;
+int i,j,p=0,d;
 vector<string> SUM(26);
 
 vector<string> foods = {
@@ -13,8 +13,14 @@ vector<string> foods = {
         "STEAMED EGG","MINCED PORK OMELET","STEAMED RICE","STRICKY RICE"
     };
 
+vector<string> drinks = {
+        "WATER","TEA","ICED TEA","GREEN TEA","BLACK TEA","HOT CHOCOLATE","COFFEE","ICED COFFEE","BLACK COFFEE","LATTE","CAPPUCCINO","MOCHA","AMERICANO","BEER","COCOA","COLA","GRAPE JUICE",
+        "LEMONADE","JUICE","ORANGE JUICE","TOMATO JUICE","MILK","MILKSHAKE","SMOOTHIE","SOFT DRINK","WINE"
+};
+
 void ShowMenuFoods(){
     cout << "______________________________________________________" << endl;
+    cout << "                    FOODS MENU                        " << endl;
     for(int i = 0; i < foods.size();i++){
         cout << i+1 << "-->" << " " << *(foods.begin() + i) << endl;
     }
@@ -22,12 +28,21 @@ void ShowMenuFoods(){
 
 }
 
-void ChooseMenu(){
+void ShowMenuDrink(){
+    cout << "______________________________________________________" << endl;
+    cout << "                    DRINKS MENU                       " << endl;
+    for(int i = 0; i < drinks.size();i++){
+        cout << i+1 << "-->" << " " << *(drinks.begin() + i) << endl;
+    }
+    cout << "______________________________________________________" << endl;
+}
+
+void ChooseMenuFoods(){
     do{
         do{
             cout << "Please Enter ID Menu --> " ;
             cin >> i ;
-            if ( i < 1 || i > 26 ) cout << "ID Incorrect!!" << endl;
+            if ( i < 1 || i > 26 ) cout << "ID Incorrect!!. Please enter again." << endl;
         }while( i < 1 || i > 26 );
         p++;
         for(int l = 0;l < p;l++){
@@ -36,7 +51,26 @@ void ChooseMenu(){
         do{
             cout << "Would you like to choose again? (No == 0 || Yes == 1) " ;
             cin >> j;
-            if ( j < 0 || j > 1 ) cout << "Incorrect!!" << endl;
+            if ( j < 0 || j > 1 ) cout << "Incorrect!!. Please enter again." << endl;
+        }while (j < 0 || j > 1 );
+    }while( j == 1);
+}
+
+void ChooseMenuDrinks(){
+    do{
+        do{
+            cout << "Please Enter ID Drinks --> ";
+            cin >> d;
+            if ( d < 1 || d > 26 ) cout << "ID Incorrect!!. Please enter again." << endl;
+        }while( d < 1 || d > 26 );
+        p++;
+            for(int l = 0;l < p;l++){
+            SUM[l+(p-1)] = drinks[d-1];
+        }
+        do{
+            cout << "Would you like to choose again? (No == 0 || Yes == 1) " ;
+            cin >> j;
+            if ( j < 0 || j > 1 ) cout << "Incorrect!!. Please enter again." << endl;
         }while (j < 0 || j > 1 );
     }while( j == 1);
 }
@@ -53,7 +87,9 @@ void MenuSummary(){
 /*
 int main(){
     ShowMenuFoods();
-    ChooseMenu();
+    ChooseMenuFoods();
+    ShowMenuDrink();
+    ChooseMenuDrinks();
     MenuSummary();
     return 0;
 }
