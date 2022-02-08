@@ -60,7 +60,7 @@ int main(){
             while(true){
                 system("cls");
                 ShowRoom();
-                cout << "Please enter the room number that you are interested in : ";
+                cout << "\nPlease enter the room number that you are interested in : ";
                 getline(cin,text);
                 if(text.size()!=1) continue;
                 numb = atoi(text.c_str());
@@ -90,7 +90,7 @@ int main(){
         else if(state==3){
             system("cls");
             while(true){
-                cout << "Please enter the room from X01 to X10 e.g. 101 or 'Back' : ";
+                cout << "Please enter the room from X01 to X10 e.g. 101 Or 'Back' : ";
                 getline(cin,text);
                 if(Toupper(text)=="BACK"){
                     state--;
@@ -107,7 +107,7 @@ int main(){
         else if(state==4){
             system("cls");
             while(true){
-                cout << "Please enter 1st day (20yy/mm/dd) e.g. 2022/01/01 or 'Back' : ";
+                cout << "Please enter Check-In day (20yy/mm/dd) e.g. 2022/02/08 Or 'Back' : ";
                 getline(cin,text);
                 if(Toupper(text)=="BACK"){
                     state--;
@@ -123,7 +123,7 @@ int main(){
         else if(state==5){
             system("cls");
             while(true){
-                cout << "Please enter end day (20yy/mm/dd) e.g. 2022/01/01 or 'Back' : ";
+                cout << "Please enter Check-Out day (20yy/mm/dd) e.g. 2022/02/09 or 'Back' : ";
                 getline(cin,text);
                 if(Toupper(text)=="BACK"){
                     state--;
@@ -145,7 +145,7 @@ int main(){
                     cout << "Can reserve\n";
                     totalday = TotalDays(start1,end1);
                     cout << "Total days = " << totalday;
-                    cout << "\nPress ENTER to continue or enter 'Cancel' to reserve again : ";
+                    cout << "\nPress 'ENTER' key to continue Or 'Cancel' to reserve again : ";
                     getline(cin,text);
                     if(Toupper(text)=="CANCEL"){
                         state = 1;
@@ -182,7 +182,7 @@ int main(){
         }
         else if(state==7){
             ShowMenuFoods();
-            ChooseMenu();
+            ChooseMenuFoods();
             MenuSummary();
             cout << "\nPress ENTER to continue";
             cin.ignore();
@@ -235,7 +235,9 @@ int main(){
                 cout << "\nPlease enter 'OK' to accept or enter 'Cancel' to cancel again : ";
                 getline(cin,text);
                 if(Toupper(text)=="OK"){
-                    cout << "Reserve completed\n";
+                    cout <<"============================================================"<<endl;
+                    cout << "\t\tReserve completed\n";
+                    cout <<"============================================================"<<endl;
                     state = 100;
                     break;
                 }

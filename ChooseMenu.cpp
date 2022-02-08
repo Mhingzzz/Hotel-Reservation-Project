@@ -21,8 +21,9 @@ vector<string> drinks = {
 void ShowMenuFoods(){
     cout << "______________________________________________________" << endl;
     cout << "                    FOODS MENU                        " << endl;
+    cout << "______________________________________________________" << endl;
     for(int i = 0; i < foods.size();i++){
-        cout << i+1 << "-->" << " " << *(foods.begin() + i) << endl;
+        cout << i+1 << "->" << " " << *(foods.begin() + i) << endl;
     }
     cout << "______________________________________________________" << endl;
 
@@ -31,8 +32,9 @@ void ShowMenuFoods(){
 void ShowMenuDrink(){
     cout << "______________________________________________________" << endl;
     cout << "                    DRINKS MENU                       " << endl;
+    cout << "______________________________________________________" << endl;
     for(int i = 0; i < drinks.size();i++){
-        cout << i+1 << "-->" << " " << *(drinks.begin() + i) << endl;
+        cout << i+1 << "->" << " " << *(drinks.begin() + i) << endl;
     }
     cout << "______________________________________________________" << endl;
 }
@@ -78,6 +80,7 @@ void ChooseMenuDrinks(){
 void MenuSummary(){
     cout << "______________________________________________________" << endl;
     cout << "                   Menu Summary                       " << endl;
+    cout << "______________________________________________________" << endl;
     for(int a = 0; a < p ; a++){
         cout << a+1 << "--> " << SUM[a] << endl;
     }
