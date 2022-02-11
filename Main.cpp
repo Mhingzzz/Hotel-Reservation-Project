@@ -183,6 +183,8 @@ int main(){
         else if(state==7){
             ShowMenuFoods();
             ChooseMenuFoods();
+            ShowMenuDrink();
+            ChooseMenuDrinks();
             MenuSummary();
             cout << "\nPress ENTER to continue";
             cin.ignore();
