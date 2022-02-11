@@ -2,6 +2,9 @@
 #include <ctime>
 using namespace std;
 
+double Discount;
+string Season; 
+
 void RandomDiscount(int price,int month){ //function สุ่มส่วนลด รับ input เป็นราคารวมและเดือนที่จอง(วันแรก)
 
     int decision; 
@@ -31,6 +34,7 @@ void RandomDiscount(int price,int month){ //function สุ่มส่วนล
             discount = rand()%30;
             cout << "You receive a " << discount+1 << "% discount from " << season << " promotion" << endl;
             cout << "Total: " << price << " Baht" << endl;
+            Discount = discount+1;
             cout << "Discount " << discount+1 << "%: " << (double) (price)*((discount+1)/100) << " Baht" << endl;
             cout << "Total after discount: " << price - ((double) (price)*((discount+1)/100)) << " Baht";
 
@@ -39,6 +43,7 @@ void RandomDiscount(int price,int month){ //function สุ่มส่วนล
         else{ // กรณีที่สุ่มไม่ได้ส่วนลด โอกาส 70%
             discount = 0;
             cout << "Sorry, the promotion is unavailable now.";
+            Discount = 0;
         }
 
     
