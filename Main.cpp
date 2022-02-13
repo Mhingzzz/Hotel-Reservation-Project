@@ -240,7 +240,7 @@ int main(){
             cout << "Total Day --> " << totalday << endl;
             cout << "Discount --> " << Discount << " %" << " On Season --> " << Season << " promotion" << endl; 
             if( Discount == 0 ){
-                cout << "Total Price : " << price*totalday<< " Baht" << endl;
+                cout << "Total Price : " << price << " Baht" << endl;
             }else{
                 cout << "Total Price : " << price - ((double) (price)*((Discount)/100)) << " Baht" << endl;
             }
