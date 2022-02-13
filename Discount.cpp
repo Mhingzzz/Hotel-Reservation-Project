@@ -26,7 +26,7 @@ void RandomDiscount(int price,int month){ //function สุ่มส่วนล
         }else if(month == 9 || month == 10 ||month == 11 || month == 12){
             season = "Winter";
         }
-        
+        Season = season;
         double discount; //สุ่มส่วนลดโดยหลังจากที่ input เลข 1 แล้วโอกาสที่จะได้ส่วนลดเป็น 30% ถ้าได้ส่วนลด จะสุ่มส่วนลด 1%-30% แล้วสรุปราคาส่วนลดก่อนและหลัง
         srand(time(0));
         int percent = rand()%10;
@@ -49,6 +49,7 @@ void RandomDiscount(int price,int month){ //function สุ่มส่วนล
     
     }else if(decision == 2){ //หลังจากที่ input เลข 2
         cout << "You decline to ask for season discount.";
+        Discount = 0;
     }
 
 }    
