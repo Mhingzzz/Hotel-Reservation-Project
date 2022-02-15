@@ -60,8 +60,3 @@ void RandomDiscount(int price,int month){ //function สุ่มส่วนล
     }
 
 }    
-
-int main(){
-    RandomDiscount(1999,12);
-    return 0;
-}
