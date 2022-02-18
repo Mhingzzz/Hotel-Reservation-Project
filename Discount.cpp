@@ -39,12 +39,12 @@ void RandomDiscount(int price,int month){ //function สุ่มส่วนล
         int percent = rand()%10;
         if(percent == 0 || percent == 1 || percent == 2){
             discount = rand()%30;
-            cout << "==================================================================";
+            cout << "==================================================================\n";
             cout << "Congratulations! You receive a " << discount+1 << "% discount from " << season << " promotion" << endl;
             cout << "Total: " << price << " Baht" << endl;
             Discount = discount+1;
             cout << "Discount " << discount+1 << "%: " << (double) (price)*((discount+1)/100) << " Baht" << endl;
-            cout << "Total after discount: " << price - ((double) (price)*((discount+1)/100)) << " Baht";
+            cout << "Total after discount: " << price - ((double) (price)*((discount+1)/100)) << " Baht\n";
             cout << "==================================================================";
         }
         else{ // กรณีที่สุ่มไม่ได้ส่วนลด โอกาส 70%
