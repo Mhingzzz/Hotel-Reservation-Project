@@ -10,15 +10,15 @@ void RandomDiscount(int price,int month){ //function สุ่มส่วนล
 
     string decision; 
     while(decision != "1" || decision != "2"){ //ตัวเลือกรับส่วนลด รับพิมพ์ 1 ไม่รับพิทพ์ 2 วน loop ถ้า input ไม่ใช่เลข 1,2
-        cout << "==================================================================" << endl;
+        cout << "==================================================================" << endl << endl;
         cout << "             Take a chance to get a season discount!" << endl;
         cout << "         (30% chance of receiving a 1% to 30% discount)" << endl << endl;
-        cout << "                  Accept:[1] Decline:[2]" << endl;
+        cout << "                  Accept:[1] Decline:[2]" << endl << endl;
         cout << "==================================================================" << endl;
         getline(cin,decision);
-        cout << "==================================================================" << endl << endl << endl;
+        cout << "==================================================================" << endl << endl;
         if(decision == "1" || decision == "2") break;
-        else cout << "              Invalid input! Please enter again." << endl << endl << endl; 
+        else cout << "              Invalid input! Please try again." << endl << endl; 
     }
 
     int d = stoi(decision);
@@ -39,24 +39,26 @@ void RandomDiscount(int price,int month){ //function สุ่มส่วนล
         int percent = rand()%10;
         if(percent == 0 || percent == 1 || percent == 2){
             discount = rand()%30;
-            cout << "==================================================================\n";
-            cout << "Congratulations! You receive a " << discount+1 << "% discount from " << season << " promotion" << endl;
+            cout << "Congratulations! You receive a " << discount+1 << "% discount from " << season << " promotion." << endl;
             cout << "Total: " << price << " Baht" << endl;
             Discount = discount+1;
             cout << "Discount " << discount+1 << "%: " << (double) (price)*((discount+1)/100) << " Baht" << endl;
-            cout << "Total after discount: " << price - ((double) (price)*((discount+1)/100)) << " Baht\n";
+            cout << "Total after discount: " << price - ((double) (price)*((discount+1)/100)) << " Baht" << endl << endl;
             cout << "==================================================================";
         }
         else{ // กรณีที่สุ่มไม่ได้ส่วนลด โอกาส 70%
             discount = 0;
-            cout << "Sorry, the promotion is unavailable now.";
+            cout << "            Sorry, the promotion is unavailable now." << endl << endl;
+            cout << "==================================================================";
             Discount = 0;
         }
 
     
     }else if(d == 2){ //หลังจากที่ input เลข 2
-        cout << "You do not get a season discount.";
+        cout << "                You do not get a season discount." << endl << endl;
+        cout << "==================================================================";
         Discount = 0;
     }
 
 }    
+
