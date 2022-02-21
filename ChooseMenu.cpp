@@ -1,9 +1,12 @@
 #include <iostream>
+#include <string>
 #include <vector>
 
 using namespace std;
 
-int i,j,p=0,d;
+int i,p=0,d;
+char yes;
+
 vector<string> SUM(26);
 
 vector<string> foods = {
@@ -51,11 +54,11 @@ void ChooseMenuFoods(){
             SUM[l+(p-1)] = foods[i-1];
         }
         do{
-            cout << "Would you like to choose again? (No == 0 || Yes == 1) " ;
-            cin >> j;
-            if ( j < 0 || j > 1 ) cout << "Incorrect!!. Please enter again." << endl;
-        }while (j < 0 || j > 1 );
-    }while( j == 1);
+            cout << "Would you like to choose again? (y/n) " ;
+            cin >> yes;
+            if ( (yes != 'y') && (yes != 'n') ) cout << "Incorrect!!. Please enter again." << endl;
+        }while ( (yes != 'y') && (yes != 'n') );
+    }while( (yes == 'y') );
 }
 
 void ChooseMenuDrinks(){
@@ -70,11 +73,11 @@ void ChooseMenuDrinks(){
             SUM[l+(p-1)] = drinks[d-1];
         }
         do{
-            cout << "Would you like to choose again? (No == 0 || Yes == 1) " ;
-            cin >> j;
-            if ( j < 0 || j > 1 ) cout << "Incorrect!!. Please enter again." << endl;
-        }while (j < 0 || j > 1 );
-    }while( j == 1);
+            cout << "Would you like to choose again? (y/n) " ;
+            cin >> yes;
+            if ( (yes != 'y') && (yes != 'n') ) cout << "Incorrect!!. Please enter again." << endl;
+        }while ( (yes != 'y') && (yes != 'n') );
+    }while( (yes == 'y') );
 }
 
 void MenuSummary(){
