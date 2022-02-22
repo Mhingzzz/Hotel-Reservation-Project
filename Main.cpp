@@ -1,4 +1,3 @@
-#include<conio.h>
 #include"Reservation.cpp"
 #include"Day.cpp" //ตรวจสอบวันที่,คำนวนวันทั้งหมดที่ต้องการพัก
 #include"Status.cpp"
@@ -40,6 +39,9 @@ int main(){
         else if(state==0){
             while(true){
                 system("cls");
+                cout << "==================================================================" << endl;
+                cout << "                  Welcome to Reservation Program                  " << endl;
+                cout << "==================================================================" << endl;
                 cout << "Reserve [R] / Cancel the reserve [C] / Exit [E] : ";
                 getline(cin,text);
                 if(Toupper(text)=="R"){
@@ -60,9 +62,13 @@ int main(){
             while(true){
                 system("cls");
                 ShowRoom();
-                cout << "\nPlease enter the room number that you are interested in : ";
+                cout << "\nPlease enter the room number to watch the review / Back [B] : ";
                 getline(cin,text);
                 if(text.size()!=1) continue;
+                if(Toupper(text)=="B"){
+                    state--;
+                    break;
+                }
                 numb = atoi(text.c_str());
                 if(numb<1 || numb>4) continue;
                 else{
@@ -75,24 +81,28 @@ int main(){
             while(true){
                 system("cls");
                 Review(numb);
-                cout << "\nIf you want to go back to main menu enter 'Back' or 'Next' : ";
+                cout << "\nBack [B] / Next [N] : ";
                 getline(cin,text);
-                if(Toupper(text)=="BACK"){
+                if(Toupper(text)=="B"){
                     state--;
                     break;
                 }
-                if(Toupper(text)=="NEXT"){
+                if(Toupper(text)=="N"){
                     state++;
                     break;
                 }
             }
         }
         else if(state==3){
-            system("cls");
             while(true){
-                cout << "Please enter the room from X01 to X10 e.g. 101 Or 'Back' : ";
+                system("cls");
+                ShowRoom();
+                cout << "\nRoom-ID Format with 3 digits : TXX (T is No. of room type)\n";
+                cout << "Each room type has only 10 rooms e.g. T01 to T10\n\n";
+                cout << "Example : 205 is Superior Room type\n\n";
+                cout << "Please enter the Room-ID to reserve / Back [B] : ";
                 getline(cin,text);
-                if(Toupper(text)=="BACK"){
+                if(Toupper(text)=="B"){
                     state--;
                     break;
                 }
@@ -101,15 +111,14 @@ int main(){
                     state++;
                     break;
                 }
-                cout << "Wrong input.\n";
             }
         }
         else if(state==4){
             system("cls");
             while(true){
-                cout << "Please enter Check-In day (20yy/mm/dd) e.g. 2022/02/08 Or 'Back' : ";
+                cout << "Please enter Check-In day (20yy/mm/dd) e.g. 2022/02/08 / Back [B] : ";
                 getline(cin,text);
-                if(Toupper(text)=="BACK"){
+                if(Toupper(text)=="B"){
                     state--;
                     break;
                 }
@@ -123,9 +132,9 @@ int main(){
         else if(state==5){
             system("cls");
             while(true){
-                cout << "Please enter Check-Out day (20yy/mm/dd) e.g. 2022/02/09 or 'Back' : ";
+                cout << "Please enter Check-Out day (20yy/mm/dd) e.g. 2022/02/09 / Back [B] : ";
                 getline(cin,text);
-                if(Toupper(text)=="BACK"){
+                if(Toupper(text)=="B"){
                     state--;
                     break;
                 }
@@ -145,9 +154,9 @@ int main(){
                     cout << "Can reserve\n";
                     totalday = TotalDays(start1,end1);
                     cout << "Total days = " << totalday;
-                    cout << "\nPress 'ENTER' key to continue Or 'Cancel' to reserve again : ";
+                    cout << "\nPress 'ENTER' key to continue / Cancel [C] to reserve again : ";
                     getline(cin,text);
-                    if(Toupper(text)=="CANCEL"){
+                    if(Toupper(text)=="C"){
                         state = 1;
                         break;
                     }
@@ -156,9 +165,9 @@ int main(){
                     break;
                 }else{
                     printf("The room %s had been reserved\n",roomid.c_str());
-                    cout << "Change only roomID [R] / Change only date [D] / 'Back' : ";
+                    cout << "Change only roomID [R] / Change only date [D] / Back [B] : ";
                     getline(cin,text);
-                    if(Toupper(text)=="BACK"){
+                    if(Toupper(text)=="B"){
                         state = 3;
                         break;
                     }
@@ -186,8 +195,7 @@ int main(){
             ShowMenuDrink();
             ChooseMenuDrinks();
             MenuSummary();
-            cout << "\nPress ENTER to continue";
-            cin.ignore();
+            cout << "\nPress 'ENTER' key to continue.";
             getline(cin,text);
             state++;
         }
@@ -199,9 +207,9 @@ int main(){
         }
         else if(state==9){
             while(true){
-                cout << "Please enter your password (your password must not have space) or 'Back' : ";
+                cout << "Please enter your password (your password must not have space) / Back [B] : ";
                 getline(cin,text);
-                if(Toupper(text)=="BACK"){
+                if(Toupper(text)=="B"){
                     state--;
                     break;
                 }
@@ -224,8 +232,7 @@ int main(){
             system("cls");
             calPrice(roomid,price,totalday);
             RandomDiscount(price,start1.month);
-            cout << "\nPress ENTER to continue";
-            cin.ignore();
+            cout << "\nPress 'ENTER' to continue.";
             getline(cin,text);
             state++;
         }
@@ -235,8 +242,8 @@ int main(){
             cout << "                             Receipt                              " << endl;
             cout << "==================================================================" << endl;
             cout << "Name --> " << name << " Room ID --> "<< roomid << endl;
-            cout << "Day Start --> " << start1.datetext[0] << start1.datetext[1] << start1.datetext[2] << start1.datetext[3] << "." << start1.datetext[4] << start1.datetext[5] << "." << start1.datetext[6] << start1.datetext[7] << endl;
-            cout << "Day End --> " << end1.datetext[0] << end1.datetext[1] << end1.datetext[2] << end1.datetext[3] << "." << end1.datetext[4] << end1.datetext[5] << "." << end1.datetext[6] << end1.datetext[7] << endl;
+            cout << "Check-In day --> " << start1.year << "/" << start1.month << "/" << start1.day << endl;
+            cout << "Check-Out day--> " << end1.year << "/" << end1.month << "/" << end1.day << endl;
             cout << "Total Day --> " << totalday << endl;
             cout << "Discount --> " << Discount << " %" << " On Season --> " << Season << " promotion" << endl; 
             if( Discount == 0 ){
@@ -257,10 +264,8 @@ int main(){
             cout << "                 ==       ==        ==  ==        ==              " << endl;
             cout << "                 ==       ============  ============              " << endl;
             cout << "==================================================================" << endl;
-            // func() ที่ พิมพ์ใบเสร็จ อย่างเดียว
-            //printReceipt(name,roomid,start1.datetext,end1.datetext,totalday);
             while(true){
-                cout << "\nPlease enter 'OK' to accept or enter 'Cancel' to cancel again : ";
+                cout << "\nPlease enter 'OK' to accept / Cancel [C] to reserve again : ";
                 getline(cin,text);
                 if(Toupper(text)=="OK"){
                     cout <<"============================================================"<<endl;
@@ -269,7 +274,7 @@ int main(){
                     state = 100;
                     break;
                 }
-                if(Toupper(text)=="CANCEL"){
+                if(Toupper(text)=="C"){
                     state = 1;
                     break;
                 }
@@ -287,13 +292,22 @@ int main(){
         }
         else if(state==200){
             system("cls");
-            cancle(lines,nameslist,passwordslist,roomIDslist,startslist,endslist);
-            exportData(filename,lines);
-            cout << "\nPress ENTER to continue";
-            getline(cin,text);
+            int c = cancle(lines,nameslist,passwordslist,roomIDslist,startslist,endslist);
+            if(c==1){
+                exportData(filename,lines);
+                cout << "\nPress 'ENTER' key to continue.";
+                getline(cin,text);
+            }
+            if(c==-1){
+                cout << "\nPress 'ENTER' key to continue.";
+                getline(cin,text);
+            }
             state = 0;
         }
     }
-    cout << "End of program";
+    system("cls");
+    cout << "==================================================================" << endl;
+    cout << "                          End of Program                          " << endl;
+    cout << "==================================================================" << endl;
     return 0;
 }
