@@ -5,7 +5,7 @@
 using namespace std;
 
 int i,p=0,d;
-char yes;
+string textmenu,yes;
 
 vector<string> SUM(26);
 
@@ -20,6 +20,14 @@ vector<string> drinks = {
         "WATER","TEA","ICED TEA","GREEN TEA","BLACK TEA","HOT CHOCOLATE","COFFEE","ICED COFFEE","BLACK COFFEE","LATTE","CAPPUCCINO","MOCHA","AMERICANO","BEER","COCOA","COLA","GRAPE JUICE",
         "LEMONADE","JUICE","ORANGE JUICE","TOMATO JUICE","MILK","MILKSHAKE","SMOOTHIE","SOFT DRINK","WINE"
 };
+
+bool checki(string text){
+    int i;
+    if(text.size()>2) return false;
+    i = atoi(text.c_str());
+    if(text.size()==2 && i < 10) return false;
+    return true;
+}
 
 void ShowMenuFoods(){
     cout << "______________________________________________________" << endl;
@@ -46,38 +54,48 @@ void ChooseMenuFoods(){
     do{
         do{
             cout << "Please Enter ID Menu --> " ;
-            cin >> i ;
+            getline(cin,textmenu);
+            if(!checki(textmenu)){
+                cout << "ID Incorrect!!. Please enter again." << endl;
+                continue;
+            }else i = atoi(textmenu.c_str());
             if ( i < 1 || i > 26 ) cout << "ID Incorrect!!. Please enter again." << endl;
-        }while( i < 1 || i > 26 );
+            else break;
+        }while(true);
         p++;
         for(int l = 0;l < p;l++){
             SUM[l+(p-1)] = foods[i-1];
         }
         do{
             cout << "Would you like to choose again? (y/n) " ;
-            cin >> yes;
-            if ( (yes != 'y') && (yes != 'n') ) cout << "Incorrect!!. Please enter again." << endl;
-        }while ( (yes != 'y') && (yes != 'n') );
-    }while( (yes == 'y') );
+            getline(cin,yes);
+            if ( (yes != "y") && (yes != "n") ) cout << "Incorrect!!. Please enter again." << endl;
+        }while ( (yes != "y") && (yes != "n") );
+    }while( (yes == "y") );
 }
 
 void ChooseMenuDrinks(){
     do{
         do{
             cout << "Please Enter ID Drinks --> ";
-            cin >> d;
+            getline(cin,textmenu);
+            if(!checki(textmenu)){
+                cout << "ID Incorrect!!. Please enter again." << endl;
+                continue;
+            }else d = atoi(textmenu.c_str());
             if ( d < 1 || d > 26 ) cout << "ID Incorrect!!. Please enter again." << endl;
-        }while( d < 1 || d > 26 );
+            else break;
+        }while(true);
         p++;
-            for(int l = 0;l < p;l++){
+        for(int l = 0;l < p;l++){
             SUM[l+(p-1)] = drinks[d-1];
         }
         do{
             cout << "Would you like to choose again? (y/n) " ;
-            cin >> yes;
-            if ( (yes != 'y') && (yes != 'n') ) cout << "Incorrect!!. Please enter again." << endl;
-        }while ( (yes != 'y') && (yes != 'n') );
-    }while( (yes == 'y') );
+            getline(cin,yes);
+            if ( (yes != "y") && (yes != "n") ) cout << "Incorrect!!. Please enter again." << endl;
+        }while ( (yes != "y") && (yes != "n") );
+    }while( (yes == "y") );
 }
 
 void MenuSummary(){
@@ -89,7 +107,6 @@ void MenuSummary(){
     }
     cout << "______________________________________________________" << endl;
 }
-
 /*
 int main(){
     ShowMenuFoods();

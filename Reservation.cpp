@@ -6,14 +6,16 @@ using namespace std;
 #define vs vector<string>
 //การจองห้องพัก
 
+const int presentz = 20220225;
+
 void importData(string fn,vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){
-    string text,start,end;
+    string text,start,end,data;
     char format[] = "%s %s %s %[^:]: %s";
     char n[100],s[20],e[20],pw[50],r[10];
     ifstream source(fn);
     getline(source,text);
     while(getline(source,text)){
-        L.push_back(text);
+        data = text;
         sscanf(text.c_str(),format,r,s,e,n,pw);
         start = s;
         start.erase(7,1);
@@ -21,11 +23,14 @@ void importData(string fn,vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){
         end = e;
         end.erase(7,1);
         end.erase(4,1);
-        N.push_back(n);
-        PW.push_back(pw);
-        R.push_back(r);
-        S.push_back(start);
-        E.push_back(end);
+        if(atoi(end.c_str())>=presentz){
+            L.push_back(data);
+            N.push_back(n);
+            PW.push_back(pw);
+            R.push_back(r);
+            S.push_back(start);
+            E.push_back(end);
+        }
     }
     source.close();
 }
@@ -93,7 +98,6 @@ void insertData(vs &L, vs &N, vs &PW, vs &R, vs &S,vs &E){
     S.pop_back();
     E.pop_back();
 }
-
 /*
 int main(){
     vector<string> lines,names,passwords,roomIDs,starts,ends;

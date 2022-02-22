@@ -12,14 +12,14 @@ string Toupper(string x){
     return y;
 }
 
-void cancle(vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){    //ยกเลิกการจอง
+int cancle(vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){    //ยกเลิกการจอง
     string str;
     int l=N.size(),index=-1,j=0;
     vector<int> idx = {-1};
     do{
         cout << "Please enter a name to cancel the reservation.(enter \"BACK\" to go back) : ";
         getline(cin,str);
-        if(Toupper(str)=="BACK") return;
+        if(Toupper(str)=="BACK") return 0;
         for(int i=0 ; i<l ; i++){
             if(Toupper(str)==Toupper(N[i])){
                 idx[j] = i;
@@ -52,12 +52,12 @@ void cancle(vs &L,vs &N,vs &PW,vs &R,vs &S,vs &E){    //ยกเลิกกา
             E.erase(E.begin()+idx[index-1]);
             system("cls");
             cout << "Cancel the reservation success.";
-            return;
+            return 1;
         }
         if(i>0) cout << i << " attempt remaining.\n";
         else cout << "Failed";
     }
-    return;
+    return -1;
 }
 /*
 int main(){
